@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vice City Cover Art Studio: turn your photos and a caption into multi-panel GTA-style poster art, offline in your browser, exported as a PNG.">
+  <title>Vice City Stories - GTA 6 Cover Art Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Vice City Cover Studio</h1>
+    <p>Create professional multi-panel Vice City style poster art offline</p>
+    <p class="hint">Load a photo, crop and position it, pick a layout and theme, then export your poster as a PNG — everything stays on your machine.</p>
+  </header>
+
+  <div class="main-container">
+    <div class="control-panel">
+      <div class="control-group">
+        <label>Panel Layout</label>
+        <select id="layoutSelect">
+          <option value="triple">3-Panel Comic Poster</option>
+          <option value="dual" selected>2-Panel Split Poster</option>
+          <option value="single">Single Epic Poster</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Main Headline Caption</label>
+        <input type="text" id="captionInput" value="SUNSET HEIST">
+      </div>
+
+      <div class="control-group">
+        <label>Sub-Headline</label>
+        <input type="text" id="subcaptionInput" value="VICE CITY STORIES">
+      </div>
+
+      <div class="control-group">
+        <label>Primary Photo</label>
+        <input type="file" id="photoInput1" accept="image/*">
+        <div class="samples-row">
+          <button id="sample1Btn">Sample: Pier</button>
+          <button id="sample2Btn">Sample: Boulevard</button>
+        </div>
+        <div class="slider-row">
+          <label for="photo1Zoom">Zoom</label>
+          <input type="range" id="photo1Zoom" min="1" max="2.5" step="0.05" value="1">
+        </div>
+        <div class="slider-row">
+          <label for="photo1PanX">Position X</label>
+          <input type="range" id="photo1PanX" min="-1" max="1" step="0.05" value="0">
+        </div>
+        <div class="slider-row">
+          <label for="photo1PanY">Position Y</label>
+          <input type="range" id="photo1PanY" min="-1" max="1" step="0.05" value="0">
+        </div>
+      </div>
+
+      <div class="control-group" id="secondaryPhotoGroup">
+        <label>Secondary Photo (Multi-panel)</label>
+        <input type="file" id="photoInput2" accept="image/*">
+        <div class="samples-row">
+          <button id="samplePier2Btn">Sample: Pier</button>
+          <button id="sampleBlvd2Btn">Sample: Boulevard</button>
+        </div>
+        <div class="slider-row">
+          <label for="photo2Zoom">Zoom</label>
+          <input type="range" id="photo2Zoom" min="1" max="2.5" step="0.05" value="1">
+        </div>
+        <div class="slider-row">
+          <label for="photo2PanX">Position X</label>
+          <input type="range" id="photo2PanX" min="-1" max="1" step="0.05" value="0">
+        </div>
+        <div class="slider-row">
+          <label for="photo2PanY">Position Y</label>
+          <input type="range" id="photo2PanY" min="-1" max="1" step="0.05" value="0">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Color Theme</label>
+        <select id="themeSelect">
+          <option value="sunset" selected>Vice Sunset (Pink/Orange)</option>
+          <option value="cyber">Neon Cyber (Cyan/Magenta)</option>
+          <option value="ocean">Ocean Drive (Blue/Gold)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Export Resolution</label>
+        <select id="resolutionSelect">
+          <option value="1080">Square (1080x1080)</option>
+          <option value="portrait" selected>Instagram Portrait (1080x1350)</option>
+          <option value="widescreen">Widescreen Poster (1920x1080)</option>
+        </select>
+      </div>
+
+      <button class="btn" id="exportBtn">Export High-Res PNG</button>
+      <button class="btn btn-secondary" id="randomizeBtn">Randomize Style</button>
+    </div>
+
+    <div class="preview-area">
+      <canvas id="coverCanvas" width="1080" height="1350" aria-label="Live preview of your cover art"></canvas>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
